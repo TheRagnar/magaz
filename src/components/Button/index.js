@@ -1,37 +1,28 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { TouchableOpacity, Text, ActivityIndicator } from "react-native";
+import style from "./style";
+import PropTypes from 'prop-types';
 
-import ButtonStyle from './style';
 
-const Button = (props) => {
-  let styleButton, styleText;
-  switch(props.type) {
-    case 'white': {
-      styleButton = ButtonStyle.white;
-      styleText = ButtonStyle.whiteText
-      break;
-    }
-    case 'double': {
-      styleButton = ButtonStyle.double;
-      styleText = ButtonStyle.doubleText
-      break;
-    }
-    case 'primary': {
-      styleButton = ButtonStyle.primary;
-      styleText = ButtonStyle.primaryText
-      break;
-    }
-    default: {
-      styleText = ButtonStyle.whiteText
-      styleButton = ButtonStyle.white;
-    }
-  }
+const Button = ({ text, onPress, type, status, isLoad }) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={styleButton}>
-        <Text style={styleText}>{props.children}</Text>
-      </View>
+    <TouchableOpacity pointerEvents={isLoad ? `none` : `auto`} style={[style.wrapper, style[`type-${type}`], style[`wrapper-status-${status}`], isLoad && style.wrapperIsLoad]} onPress={status === "normal" ? onPress : false}>
+      {!isLoad ? <Text style={[style.text, style[`text-${type}`], style[`text-status-${status}`]]}>{text}</Text> : <ActivityIndicator size="large" color="rgba(30, 66, 160, 0.9)" />}
     </TouchableOpacity>
-  );
+  )
 }
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["secondary", "white", "double"]),
+  status: PropTypes.oneOf(["normal", "disabled"]),
+  isLoad: PropTypes.bool
+}
+Button.defaultProps = {
+  type: "secondary",
+  status: "normal"
+}
+
+
 export default Button;

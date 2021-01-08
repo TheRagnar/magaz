@@ -1,55 +1,41 @@
-import React from 'react';
+import React, {useEffect} from "react";
+import { View, KeyboardAvoidingView } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { Loader } from "./components";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import Header from './components/Header';
+import { getStaticFields } from "./store/lang";
 
-import GUIScreen from './screens/GUI';
-import Links from './links';
-import LoginScreen from './screens/Login'
-import RegisterScreen from './screens/Login/Register'
+import MainWrapper from "./wrappers";
+//import CheckoutView from "./screens/CheckoutView";
 
-import BasketScreen from './screens/Basket'
+const NavigationWrapper = () => {
+  const dispatch = useDispatch();
+  const lang = useSelector(state => state.lang.data);
+  const currentLang = useSelector(state => state.lang.currentLang);
 
-const Stack = createStackNavigator();
+  useEffect(() => {
+    dispatch(getStaticFields(currentLang))
+  }, [currentLang])
 
-const NavigationWrapper = (props) => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-        //headerShown: false
-      }}>
-        <Stack.Screen
-          name="LinksScreen"
-          component={Links}
-          options={{ header: props => <Header {...props} /> }}
-        />
+  return Object.keys(lang).length > 0 ? (
+    <KeyboardAvoidingView
+      keyboardVerticalOffset={-300}
+      style={{ flex: 1 }}
+      behavior="height"
+    >
+      <MainWrapper />
+    </KeyboardAvoidingView>
+  ) : (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Loader />
+      </View>
+    );
+};
 
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="BasketScreen"
-          component={BasketScreen}
-          options={{ header: props => <Header {...props} /> }}
-        />
-        
-
-        <Stack.Screen
-          name="GUIScreen"
-          component={GUIScreen}
-          options={{ header: props => <Header {...props} /> }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
 export default NavigationWrapper;

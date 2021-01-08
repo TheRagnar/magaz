@@ -1,45 +1,39 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+import { st } from "../../const";
 
-import st from '../../const/styleConst';
+const style = StyleSheet.create({
+  wrapper: {
+    height: 67,
+    borderRadius: st.borderRadius,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%"
+  },
+  text: {
+    textAlign: "center",
+    fontSize: 16,
+    color: st.iconColor
+  },
+  "text-secondary": {
+    color: st.iconColor,
+  },
+  "type-secondary": {
+    backgroundColor: st.secondaryColor,
+  },
 
-const all = {
-  width: '100%',
-  borderRadius: st.baseBorderRadius,
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: 67
-}
-const allText = {
-  fontFamily: st.fontRegular,
-  fontSize: 16,
-}
+  "text-white": {
+    color: st.iconColor,
+  },
+  "type-white": {
+    backgroundColor: st.whiteColor,
+  },
 
-const ButtonStyle = StyleSheet.create({
-  white: {
-    ...all,
-    backgroundColor: st.whiteColor
+  "text-double": {
+    color: st.doubleTextColor,
   },
-  whiteText: {
-    ...allText,
-    color: st.textColor
-  },
-  primary: {
-    ...all,
-    backgroundColor: st.primaryColor,
-  },
-  primaryText: {
-    ...allText,
-    color: st.textColor
-  },
-  double: {
-    ...all,
+  "type-double": {
     backgroundColor: st.doubleColor,
-  },
-  doubleText: {
-    ...allText,
-    color: '#738E9B'
   }
-});
+})
 
-export default ButtonStyle;
-
+export default style;

@@ -1,19 +1,12 @@
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-
-import React, { useState } from 'react';
-import NavigationWrapper from './src';
-
-import { View } from 'react-native';
-
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-
-import rootReducer from './src/store/reducers';
-
-const store = createStore(rootReducer)
-
+import AppLoading from 'expo-app-loading';
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import React, { useState } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { StatusBar } from "react-native";
+import NavigationWrapper from "./src";
+import { store, persistor } from "./src/store/createStore";
 
 const app = (props) => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -22,31 +15,36 @@ const app = (props) => {
     return (
       <AppLoading
         startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
         onFinish={() => handleFinishLoading(setLoadingComplete)}
+        onError={handleLoadingError}
       />
     );
   } else {
     return (
       <Provider store={store}>
-        <NavigationWrapper />
+        <StatusBar
+          translucent={true}
+          backgroundColor={"transparent"}
+          barStyle="light-content"
+        />
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationWrapper />
+        </PersistGate>
       </Provider>
     );
   }
-}
-
+};
 async function loadResourcesAsync() {
   await Promise.all([
-    Asset.loadAsync([
-    ]),
+    //Asset.loadAsync([]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'roboto-regular': require('./src/assets/fonts/Roboto-Regular.ttf'),
-      'roboto-medium': require('./src/assets/fonts/Roboto-Medium.ttf'),
-      'roboto-bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
-      'roboto-black': require('./src/assets/fonts/Roboto-Black.ttf'),
+      "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
+      "roboto-medium": require("./assets/fonts/Roboto-Medium.ttf"),
+      "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
+      "roboto-black": require("./assets/fonts/Roboto-Black.ttf"),
     }),
   ]);
 }
@@ -60,6 +58,5 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
 
 export default app;

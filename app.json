@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "helpresource-mobile",
-    "slug": "helpresource-mobile",
-    "version": "1.0.0",
+    "name": "Vicalina-home",
+    "slug": "vicalina",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
+    "icon": "./assets/newIcon.png",
     "splash": {
-      "image": "./src/assets/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,8 +19,17 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "versionCode": 6,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/newIcon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.therevan.magaz"
+    },
     "web": {
-      "favicon": "./src/assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png"
+    },
+    "description": ""
   }
 }
