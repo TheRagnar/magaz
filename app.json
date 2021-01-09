@@ -4,7 +4,7 @@
     "slug": "vicalina",
     "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/newIcon.png",
+    "icon": "./assets/newIconIos.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,10 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ru.vicalina.shop"
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/newIcon.png",
         "backgroundColor": "#FFFFFF"

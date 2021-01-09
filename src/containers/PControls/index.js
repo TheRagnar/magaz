@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Icon } from "../../components";
 import { screens, st, wrappers, bs } from "../../const";
 import RBSheet from "react-native-raw-bottom-sheet";
@@ -9,10 +9,12 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import style from "./style";
 import { ChangeEmail, ChangePassword } from "../../blocks";
 import { apiProfile } from "../../api";
+import { logOut } from "../../store/auth";
 
 const PControls = ({ openTopMessage }) => {
   const refRBSheet1 = useRef();
   const refRBSheet2 = useRef();
+  const dispatch = useDispatch();
   const navigation = useNavigation()
   const lang = useSelector(state => state.lang.data);
   const currentLang = useSelector(state => state.lang.currentLang);
@@ -78,6 +80,10 @@ const PControls = ({ openTopMessage }) => {
     })
   }
 
+  const onLogOut = () => {
+    dispatch(logOut())
+  }
+
   return (
     <View>
       <View style={style.wrapper}>
@@ -107,6 +113,14 @@ const PControls = ({ openTopMessage }) => {
           <View style={style.content}>
             {/* TODO */}
             <Text style={style.text}>{`Сменить e-mail`}</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={style.item} onPress={onLogOut}>
+          <View style={style.icon}><Icon type={`logout`} width={20} height={20} color={st.primaryColor} /></View>
+          <View style={style.content}>
+            {/* TODO */}
+            <Text style={style.text}>{`Выход`}</Text>
           </View>
         </TouchableOpacity>
       </View>
