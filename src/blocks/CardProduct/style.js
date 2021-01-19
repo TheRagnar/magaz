@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
-import { st } from "../../const";
+import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
   image: {
-    width: 90,
-    height: 120,
+    width: isIpad ? 160 : 90,
+    height: isIpad ? 200 : 120,
   },
   imageWrapper: {
-    marginRight: 10,
+    marginRight: isIpad ? 30 : 10,
   },
   wrapper: {
     flexDirection: "row",
@@ -27,16 +27,16 @@ const style = StyleSheet.create({
     color: "#959595",
     textDecorationLine: 'line-through',
     fontFamily: st.fontRegular,
-    fontSize: 12,
+    fontSize: isIpad ? 18 : 12,
   },
   title: {
-    fontSize: 16,
+    fontSize: isIpad ? 20 : 16,
     fontFamily: st.fontMedium,
     marginBottom: 18,
     color: st.iconColor
   },
   price: {
-    fontSize: 18,
+    fontSize: isIpad ? 22 : 18,
     fontFamily: st.fontBold,
     color: st.textColor
   },
@@ -79,7 +79,7 @@ const style = StyleSheet.create({
     backgroundColor: "#DEDEDE"
   },
   btnText: {
-    fontSize: 16,
+    fontSize: isIpad ? 20 : 16,
     fontFamily: st.fontBold,
     color: "#474950",
     textAlign: "center"
@@ -87,7 +87,7 @@ const style = StyleSheet.create({
   count: {
     width: 32,
     textAlign: "center",
-    fontSize: 16,
+    fontSize: isIpad ? 20 : 16,
     fontFamily: st.fontBold,
     color: "#474950"
   },

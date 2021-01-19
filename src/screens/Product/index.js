@@ -7,7 +7,7 @@ import Lightbox from 'react-native-lightbox';
 
 import style from "./style";
 import { Icon, Button, Loader } from "../../components";
-import { st, assets, bs } from "../../const";
+import { st, assets, bs, isIpad } from "../../const";
 import { apiProduct, apiFav, apiBasket } from "../../api";
 import { ProductOptions, Comments, TopMessage, AddProduct } from "../../blocks";
 import { addProduct } from "../../store/cardNoAuth";

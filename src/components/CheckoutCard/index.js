@@ -57,7 +57,7 @@ const CheckoutCard = ({ title, date, basket, id, openTopMessage }) => {
     <View style={style.box}>
       <TouchableOpacity style={style.wrapper} onPress={onOpen}>
         <View style={style.content}>
-          <Text style={style.title}>{title}</Text>
+          <Text style={style.title}>{`Заказ № ${id}`}</Text>
           <Text numberOfLines={1}  style={style.date}>{moment(date).format("DD.MM.YYYY")}</Text>
         </View>
         <View style={style.more}>

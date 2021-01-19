@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { st } from "../../const";
+import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
   item: {
@@ -17,7 +17,7 @@ const style = StyleSheet.create({
     fontFamily: st.fontBold,
     color: "#474950",
     fontSize: 18
-  }
+  },
 })
 
 export default style;

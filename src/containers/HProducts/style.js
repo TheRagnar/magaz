@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
-import { st } from "../../const";
+import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
   wrapper: {
+    paddingTop: isIpad ? 20 : 0,
+    paddingBottom: isIpad ? 20 : 0,
     ...st.basePadding
   },
   slide: {
@@ -11,8 +13,8 @@ const style = StyleSheet.create({
   title: {
     fontFamily: st.fontBold,
     textAlign: "center",
-    marginBottom: 20,
-    fontSize: 16,
+    marginBottom: isIpad ? 40 : 20,
+    fontSize: isIpad ? 24 : 16,
     color: st.whiteColor
   },
   sl: {

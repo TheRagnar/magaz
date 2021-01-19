@@ -75,6 +75,7 @@ const Categories = ({
         ListFooterComponent={renderLoader}
         ListEmptyComponent={renderClear}
         ListHeaderComponent={renderHeader}
+        contentContainerStyle={style.inner}
         refreshing={isRefreshing}
         onRefresh={onRefresh}
       />

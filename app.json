@@ -18,10 +18,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ru.vicalina.shop"
+      "bundleIdentifier": "ru.vicalina.shop",
+      "buildNumber": "2.0.0"
     },
     "android": {
-      "versionCode": 7,
+      "versionCode": 12,
       "adaptiveIcon": {
         "foregroundImage": "./assets/newIcon.png",
         "backgroundColor": "#FFFFFF"

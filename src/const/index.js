@@ -18,6 +18,7 @@ export const pixelRatio = (defaultWidth, defaultHeight, padding) => {
     height: totalHeight,
   };
 };
+export const isIpad = width > 600 ? true : false;
 
 export const st = {
   borderRadius: 4,

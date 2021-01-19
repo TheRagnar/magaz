@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
-import { st } from "../../const";
+import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
   wrapper: {
-    height: 67,
+    height: isIpad ? 80 : 67,
     borderRadius: st.borderRadius,
     alignItems: "center",
     justifyContent: "center",
@@ -11,7 +11,7 @@ const style = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    fontSize: 16,
+    fontSize: isIpad ? 20 : 16,
     color: st.iconColor
   },
   "text-secondary": {

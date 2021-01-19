@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { connect } from "react-redux";
 
 import style from "./style";
 import { bs, screens, wrappers } from "../../const";
-import { apiCheckout } from "../../api";
-import { Checkbox, Input, Button } from "../../components";
+import { apiCheckout, apiProfile } from "../../api";
+import { Checkbox, Input, Button, Loader } from "../../components";
 
 const Checkout = ({ lang, currentLang, token, navigation }) => {
   const [isPending, setIsPending] = useState(false);
@@ -13,9 +13,10 @@ const Checkout = ({ lang, currentLang, token, navigation }) => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
+  const [isFetching, setIsFetching] = useState(false);
 
   const [city, setCity] = useState('');
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState(''); 
   const [additionalComment, setAdditionalComment] = useState('');
   const [isNal, setIsNal] = useState(false);
   const [error, setError] = useState(false);
@@ -53,6 +54,40 @@ const Checkout = ({ lang, currentLang, token, navigation }) => {
     }).finally(() => {
       setIsPending(false)
     })
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = () => {
+    setIsFetching(true)
+    apiProfile.getInfo(currentLang, token).then(res => {
+      const item = res.data.data.item;
+      if (item.fio) {
+        setFio(item.fio)
+      }
+      if (item.phone) {
+        setPhone(item.phone)
+      }
+      if (item.city) {
+        setCity(item.city)
+      }
+      if (item.address) {
+        setAddress(item.address)
+      }
+    }).catch(error => {
+      console.warn(error)
+    }).finally(()=>{
+      setIsFetching(false)
+    })
+  }
+
+  if(isFetching) {
+    return (
+      <ScrollView style={bs.wrapper}>
+        <Loader/>
+      </ScrollView>
+    )
   }
 
   return (
@@ -106,7 +141,7 @@ const mapStateToProps = (state) => {
   return {
     lang: state.lang.data,
     currentLang: state.lang.currentLang,
-    token: state.auth.token
+    token: state.auth.token,
   }
 }
 

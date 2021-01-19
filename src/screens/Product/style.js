@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { st } from "../../const";
+import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
   options: {
@@ -38,25 +38,25 @@ const style = StyleSheet.create({
     top: -46
   },
   image: {
-    width: 270,
-    height: 270
+    width: isIpad ? 400 : 270,
+    height: isIpad ? 400 : 270
   },
   title: {
     color: '#474950',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: isIpad ? 30 : 18,
     fontFamily: st.fontBold,
-    marginBottom: 12,
+    marginBottom: isIpad ? 30 : 12,
   },
   price: {
     color: '#333',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: isIpad ? 24 : 14,
     fontFamily: st.fontBold,
   },
   header: {
-    paddingBottom: 35,
-    paddingTop: 30,
+    paddingBottom: isIpad ? 45 : 35,
+    paddingTop: isIpad ? 40 : 30,
   },
   buttons: {
     paddingLeft: 30,
@@ -66,7 +66,7 @@ const style = StyleSheet.create({
   clear: {
     textAlign: "center",
     fontFamily: st.fontMedium,
-    fontSize: 18
+    fontSize: isIpad ? 24 : 18
   },
   close: {
     position: "absolute",

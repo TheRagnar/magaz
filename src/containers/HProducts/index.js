@@ -6,6 +6,7 @@ import style from "./style";
 import { hProductsGet } from "../../store/hProducts";
 import { Loader, Slider } from "../../components";
 import { GridProduct } from "../../blocks";
+import { isIpad } from "../../const";
 
 const HProducts = ({ currentLang, lang, products, isFetching, error, hProductsGetAction }) => {
   const sl = useRef();
@@ -19,7 +20,7 @@ const HProducts = ({ currentLang, lang, products, isFetching, error, hProductsGe
     <View style={style.wrapper}>
       <Text style={style.title}>{lang['main.popular.header']}</Text>
       {products.length > 0 && (
-        <Slider itemWidth={200} margin={10}>
+        <Slider itemWidth={isIpad ? 320 : 200} margin={10}>
           {products.map((item, key) => {
             return (<GridProduct key={key} id={item.id} priceDiscount={item.price_without_discount} name={item.name} feature={item.feature} price={item.price} />)
           })}
