@@ -9,6 +9,7 @@ import filterOptions from "./filterOptions";
 import categories from "./categories";
 import products from "./products";
 import cardNoAuth from "./cardNoAuth";
+import popular from "./popular";
 
 const rootReducer = combineReducers({
   auth: auth,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   categories: categories,
   products: products,
   cardNoAuth: cardNoAuth,
+  popular: popular,
 });
 
 export default rootReducer;

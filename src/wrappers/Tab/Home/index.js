@@ -3,11 +3,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { Header } from "../../../components";
 import { screens, bs } from "../../../const";
-import { HomeScreen } from "../../../screens";
+import { HomeScreen, PopularScreen } from "../../../screens";
 
 const Stack = createStackNavigator(); 
 
-const HomeWrapper = () => {
+const HomeWrapper = ({navigation}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -21,6 +21,18 @@ const HomeWrapper = () => {
           headerRight: () => <Header/>,
         }}
 
+      />
+
+      <Stack.Screen
+        name={screens.Popular}
+        component={PopularScreen}
+        options={{
+          unmountOnBlur: true,
+          headerStyle: bs.header,
+          headerTitle: () => <Header type={"logo"} />,
+          headerLeft: () => <Header type={"back"} onBack={()=>{navigation.navigate(screens.Home)}}/>,
+          headerRight: () => <Header/>,
+        }}
       />
     </Stack.Navigator>
   );

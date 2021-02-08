@@ -45,7 +45,7 @@ const apiLang = {
 
 const apiHProducts = {
   get: (currentLang) => {
-    return axios.get(`${url}/products?paginate.page=0&paginate.per-page=9`, getHeader(currentLang));
+    return axios.get(`${url}/products?paginate.page=0&paginate.per-page=9&order.views.desc`, getHeader(currentLang));
   },
 }
 

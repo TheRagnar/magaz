@@ -12,6 +12,7 @@ import CategoriesScreen from "./Categories";
 import ProductsScreen from "./Products";
 import RegScreen from "./Reg";
 import CheckoutSuccessScreen from "./CheckoutSuccess";
+import PopularScreen from "./Popular";
 
 export {
   AuthScreen,
@@ -27,5 +28,6 @@ export {
   CategoriesScreen,
   ProductsScreen,
   RegScreen,
-  CheckoutSuccessScreen
+  CheckoutSuccessScreen,
+  PopularScreen
 }

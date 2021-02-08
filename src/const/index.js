@@ -161,6 +161,7 @@ export const screens = {
   Profile: "ProfileScreen",
   Reg: "RegScreen",
   Restore: "RestoreScreen",
+  Popular: "PopularScreen"
 };
 
 

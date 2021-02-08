@@ -22,7 +22,7 @@
       "buildNumber": "2.0.0"
     },
     "android": {
-      "versionCode": 12,
+      "versionCode": 14,
       "adaptiveIcon": {
         "foregroundImage": "./assets/newIcon.png",
         "backgroundColor": "#FFFFFF"

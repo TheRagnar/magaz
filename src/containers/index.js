@@ -7,7 +7,7 @@ import FOptions from "./FOptions";
 import FCategories from "./FCategories";
 import Categories from "./Categories";
 import ProductsContainer from "./Products";
-
+import ProductsContainerPopular from "./ProductsContainerPopular";
 export {
   HCategories,
   HProducts,
@@ -17,5 +17,6 @@ export {
   FOptions,
   FCategories,
   Categories,
-  ProductsContainer
+  ProductsContainer,
+  ProductsContainerPopular
 }
