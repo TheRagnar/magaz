@@ -40,7 +40,7 @@ const Products = ({
 
   useEffect(() => {
     productsRefreshAction(currentLang, generateQuery());
-  }, [filterOptions, filterKeyword, id]);
+  }, [filterOptions, filterKeyword]);
 
   useEffect(()=> {
     setFilterOptionsAction([])
@@ -141,7 +141,7 @@ const Products = ({
         ListHeaderComponent={renderHeader()}
         refreshing={isRefreshing}
         onRefresh={onRefresh}
-        contentContainerStyle={{flex:1}}
+        contentContainerStyle={{flexGrow:1}}
       />
     </View>
   );

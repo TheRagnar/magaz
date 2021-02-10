@@ -7,7 +7,7 @@ import { ProductsContainerPopular } from "../../containers";
 const Popular = ({ route }) => {
 
   return (
-    <View style={[bs.wrapper, {flex: 1}]}>
+    <View style={[bs.wrapper, {flexGrow: 1}]}>
       <ProductsContainerPopular/>
     </View>
   )

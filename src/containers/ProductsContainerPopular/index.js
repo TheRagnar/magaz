@@ -103,7 +103,7 @@ const Products = ({
         ListEmptyComponent={renderClear}
         refreshing={isRefreshing}
         onRefresh={onRefresh}
-        contentContainerStyle={{flex:1}}
+        contentContainerStyle={{flexGrow:1}}
       />
     </View>
   );
