@@ -117,7 +117,6 @@ const mapStateToProps = (state) => {
     error: state.popular.error,
     products: state.popular.products,
     paginate: state.popular.paginate,
-    isRefreshing: state.popular.isRefreshing,
   };
 };
 const mapDispatchToProps = (dispatch) => {

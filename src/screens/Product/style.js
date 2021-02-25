@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 import { st, isIpad } from "../../const";
 
 const style = StyleSheet.create({
+  headerWrapper: {
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
   options: {
     paddingLeft: 30,
     paddingRight: 30,

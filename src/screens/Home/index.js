@@ -1,19 +1,28 @@
 import React from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import {Image, ScrollView, View} from "react-native";
 
 import style from "./style";
-import { bs, pixelRatio } from "../../const";
-import { HProducts, HCategories } from "../../containers";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { screens } from "../../const"
-const Home = ({ navigation }) => {
+import {bs, pixelRatio, screens, wrappers} from "../../const";
+import {HCategories, HProducts} from "../../containers";
+import {TouchableOpacity} from "react-native-gesture-handler";
+
+import {connect} from "react-redux";
+
+const Home = ({navigation, lang}) => {
   return (
     <ScrollView style={bs.wrapper}>
       <View style={style.banners}>
         <View style={style.banner}>
           <Image source={require("../../../assets/ban1.png")} style={[style.bannerImage, pixelRatio(330, 138, 40)]}/>
         </View>
-        <TouchableOpacity onPress={()=>{navigation.navigate(screens.Popular)}} style={style.banner}>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate(
+            wrappers.Dinner, {
+              screen: screens.Products,
+              params: { id: lang['main.popular.category'] }
+            }
+          );
+        }} style={style.banner}>
           <Image source={require("../../../assets/ban2.png")} style={[style.bannerImage, pixelRatio(330, 88, 40)]}/>
         </TouchableOpacity>
       </View>
@@ -27,4 +36,10 @@ const Home = ({ navigation }) => {
   )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    lang: state.lang.data,
+  }
+}
+
+export default connect(mapStateToProps, null)(Home);

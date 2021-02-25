@@ -57,7 +57,6 @@ export const st = {
 export const bs = StyleSheet.create({
   fullWrapper: {
     flex: 1,
-    backgroundColor: st.primaryColor,
     paddingBottom: 50,
     ...st.basePadding,
     paddingTop: 50,

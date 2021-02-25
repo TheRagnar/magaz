@@ -72,10 +72,12 @@ const CheckoutCard = ({ title, date, basket, id, openTopMessage }) => {
         customStyles={bs.sheet}
       >
         <ScrollView contentContainerStyle={{
-          paddingBottom: 30
+          paddingBottom: 30,
+          paddingLeft: 15,
+          paddingRight: 15
         }}>
         <View style={style.header}>
-          <Text style={style.title}>{title}</Text>
+          <Text style={style.title}>{`Заказ № ${id}`}</Text>
           <TouchableOpacity onPress={onClose} style={style.iconClose}>
             <Icon type={`close`} width={26} height={26} />
           </TouchableOpacity>
