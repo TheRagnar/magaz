@@ -1,8 +1,8 @@
 import { StyleSheet, Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
-export const url = "https://vicalina.dev-swift.ru/api/v1";
-export const assets = "https://vicalina.dev-swift.ru";
+export const url = "https://mobile.vicalina-home.kz/api/v1";
+export const assets = "https://mobile.vicalina-home.kz";
 export const clientId = "1";
 export const clientSecret = "8OJuZMJIZuDgtlVAAZakiUotKYpyJ9m8M2JwT4C3";
 export const grandType = "password";
